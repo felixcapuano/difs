@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node ./app/server.js",
-    "back": "nodemon -i ./app/frontend ./app/server.js",
-    "front": "cd ./app/frontend && npm start"
+    "back": "nodemon -i ./app/front ./app/server.js",
+    "front": "cd ./app/front && npm start"
   },
   "author": "",
   "license": "ISC",
