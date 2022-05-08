@@ -1,2 +1,0 @@
-# difs
-Distributed file system
