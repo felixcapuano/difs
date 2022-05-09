@@ -1,16 +1,19 @@
-// import {} from 'crud';
+import $ from 'jquery';
 
-export const commands = {
-  ls: () => {
-    return 'ls';
-  },
-  touch: () => {
-    return 'touch';
-  },
-  mkdir: () => {
-    return 'mkdir';
-  },
-  cd: () => {
-    return 'cd';
-  },
+const newCommand = (callback) => {
+  return (...args) => {
+    const opts = $.terminal.parse_options(args);
+    return callback(opts);
+  };
 };
+
+const commands = {
+  ls: newCommand((opts) => {
+    return 'ls';
+  }),
+  cd: newCommand((opts) => {
+    return 'cd';
+  }),
+};
+
+export default commands;
