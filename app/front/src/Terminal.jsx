@@ -5,10 +5,10 @@ import 'jquery.terminal/css/jquery.terminal.min.css';
 import commands from './commands';
 
 const Terminal = () => {
-  const terminalNode = useRef();
+  const terminalRef = useRef();
 
   useEffect(() => {
-    const terminal = $(terminalNode.current).terminal(commands, {
+    const terminal = $(terminalRef.current).terminal(commands, {
       prompt: '# ',
       checkArity: false,
     });
@@ -17,7 +17,7 @@ const Terminal = () => {
     return () => terminal.destroy();
   }, []);
 
-  return <div id='terminal' ref={terminalNode} />;
+  return <div id='terminal' ref={terminalRef} />;
 };
 
 export default Terminal;
