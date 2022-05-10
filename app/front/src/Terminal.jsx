@@ -2,18 +2,24 @@ import React, { useEffect, useRef } from 'react';
 import $ from 'jquery';
 import 'jquery.terminal';
 import 'jquery.terminal/css/jquery.terminal.min.css';
-import commands from './commands';
+import { useGun } from './GunProvider';
+import Commands from './commands';
+import GunDb from './db';
 
 const Terminal = () => {
   const terminalRef = useRef();
+  const gun = useGun();
 
   useEffect(() => {
+    const gunDb = new GunDb(gun);
+    const commands = new Commands(gunDb)._cmds;
+
     const terminal = $(terminalRef.current).terminal(commands, {
       prompt: '# ',
       checkArity: false,
     });
-    terminal.clear();
 
+    terminal.clear();
     return () => terminal.destroy();
   }, []);
 
